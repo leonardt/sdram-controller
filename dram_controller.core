@@ -8,7 +8,9 @@ files =
  rtl/dnano_interface.v
  rtl/double_click.v
  rtl/fifo.v
+ rtl/fsm.v
  rtl/sdram_controller.v
+ rtl/sdram_controller_silica.v
 file_type = verilogSource
 usage = sim synth
 
