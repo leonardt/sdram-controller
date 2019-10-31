@@ -272,7 +272,7 @@ begin
      end
 end
 
-fsm fsm_isnt(refresh_cnt, rd_enable, wr_enable, state, command, clk, rst_n);
+fsm fsm_isnt(state, command, refresh_cnt, rd_enable, wr_enable, clk, rst_n);
 /* // Next state logic */
 /* always @* */
 /* begin */
