@@ -134,7 +134,7 @@ fifo #(.BUS_WIDTH(16)) rddata_fifoi (
 /* SDRAM */
 
 
-sdram_controller sdram_controlleri (
+sdram_controller_silica sdram_controlleri (
     /* HOST INTERFACE */
     .wr_addr       (wro_fifo[39:16]),
     .wr_data       (wro_fifo[15:0]),
