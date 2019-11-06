@@ -1,5 +1,3 @@
-
-
 module fsm
 (
   output [5-1:0] state,
@@ -20,146 +18,146 @@ module fsm
   always @(cmd or _ or refresh_cnt or rd_enable or wr_enable or CLK or RESET or yield_state) begin
     __next = _;
     cmd_next = cmd;
-    if(yield_state == 8) begin
+    if(yield_state == 5'b01000) begin
       if(__next == 0) begin
-        cmd_next = 145;
-        yield_state_next = 9;
+        cmd_next = 8'b10010001;
+        yield_state_next = 5'b01001;
       end else begin
         __next = __next - 1;
-        cmd_next = 184;
-        yield_state_next = 8;
+        cmd_next = 8'b10111000;
+        yield_state_next = 5'b01000;
       end
-    end else if(yield_state == 9) begin
-      cmd_next = 184;
-      yield_state_next = 5;
-    end else if(yield_state == 5) begin
-      cmd_next = 136;
-      yield_state_next = 10;
-    end else if(yield_state == 10) begin
+    end else if(yield_state == 5'b01001) begin
+      cmd_next = 8'b10111000;
+      yield_state_next = 5'b00101;
+    end else if(yield_state == 5'b00101) begin
+      cmd_next = 8'b10001000;
+      yield_state_next = 5'b01010;
+    end else if(yield_state == 5'b01010) begin
       __next = 7;
-      cmd_next = 184;
-      yield_state_next = 11;
-    end else if(yield_state == 11) begin
+      cmd_next = 8'b10111000;
+      yield_state_next = 5'b01011;
+    end else if(yield_state == 5'b01011) begin
       if(__next == 0) begin
-        cmd_next = 136;
-        yield_state_next = 12;
+        cmd_next = 8'b10001000;
+        yield_state_next = 5'b01100;
       end else begin
         __next = __next - 1;
-        cmd_next = 184;
-        yield_state_next = 11;
+        cmd_next = 8'b10111000;
+        yield_state_next = 5'b01011;
       end
-    end else if(yield_state == 12) begin
+    end else if(yield_state == 5'b01100) begin
       __next = 7;
-      cmd_next = 184;
-      yield_state_next = 13;
-    end else if(yield_state == 13) begin
+      cmd_next = 8'b10111000;
+      yield_state_next = 5'b01101;
+    end else if(yield_state == 5'b01101) begin
       if(__next == 0) begin
-        cmd_next = 128;
-        yield_state_next = 14;
+        cmd_next = 8'b1000000x;
+        yield_state_next = 5'b01110;
       end else begin
         __next = __next - 1;
-        cmd_next = 184;
-        yield_state_next = 13;
+        cmd_next = 8'b10111000;
+        yield_state_next = 5'b01101;
       end
-    end else if(yield_state == 14) begin
+    end else if(yield_state == 5'b01110) begin
       __next = 1;
-      cmd_next = 184;
-      yield_state_next = 15;
-    end else if(yield_state == 15) begin
+      cmd_next = 8'b10111000;
+      yield_state_next = 5'b01111;
+    end else if(yield_state == 5'b01111) begin
       if(__next == 0) begin
-        cmd_next = 184;
-        yield_state_next = 0;
+        cmd_next = 8'b10111000;
+        yield_state_next = 5'b00000;
       end else begin
         __next = __next - 1;
-        cmd_next = 184;
-        yield_state_next = 15;
+        cmd_next = 8'b10111000;
+        yield_state_next = 5'b01111;
       end
-    end else if(yield_state == 0) begin
+    end else if(yield_state == 5'b00000) begin
       if(refresh_cnt >= 519) begin
-        cmd_next = 145;
-        yield_state_next = 1;
+        cmd_next = 8'b10010001;
+        yield_state_next = 5'b00001;
       end else if(rd_enable) begin
-        cmd_next = 152;
-        yield_state_next = 16;
+        cmd_next = 8'b10011xxx;
+        yield_state_next = 5'b10000;
       end else if(wr_enable) begin
-        cmd_next = 152;
-        yield_state_next = 24;
+        cmd_next = 8'b10011xxx;
+        yield_state_next = 5'b11000;
       end else begin
-        cmd_next = 184;
-        yield_state_next = 0;
+        cmd_next = 8'b10111000;
+        yield_state_next = 5'b00000;
       end
-    end else if(yield_state == 1) begin
-      cmd_next = 184;
-      yield_state_next = 2;
-    end else if(yield_state == 2) begin
-      cmd_next = 136;
-      yield_state_next = 3;
-    end else if(yield_state == 3) begin
+    end else if(yield_state == 5'b00001) begin
+      cmd_next = 8'b10111000;
+      yield_state_next = 5'b00010;
+    end else if(yield_state == 5'b00010) begin
+      cmd_next = 8'b10001000;
+      yield_state_next = 5'b00011;
+    end else if(yield_state == 5'b00011) begin
       __next = 7;
-      cmd_next = 184;
-      yield_state_next = 4;
-    end else if(yield_state == 4) begin
+      cmd_next = 8'b10111000;
+      yield_state_next = 5'b00100;
+    end else if(yield_state == 5'b00100) begin
       if(__next == 0) begin
-        cmd_next = 184;
-        yield_state_next = 0;
+        cmd_next = 8'b10111000;
+        yield_state_next = 5'b00000;
       end else begin
         __next = __next - 1;
-        cmd_next = 184;
-        yield_state_next = 4;
+        cmd_next = 8'b10111000;
+        yield_state_next = 5'b00100;
       end
-    end else if(yield_state == 16) begin
+    end else if(yield_state == 5'b10000) begin
       __next = 1;
-      cmd_next = 184;
-      yield_state_next = 17;
-    end else if(yield_state == 17) begin
+      cmd_next = 8'b10111000;
+      yield_state_next = 5'b10001;
+    end else if(yield_state == 5'b10001) begin
       if(__next == 0) begin
-        cmd_next = 169;
-        yield_state_next = 18;
+        cmd_next = 8'b10101xx1;
+        yield_state_next = 5'b10010;
       end else begin
         __next = __next - 1;
-        cmd_next = 184;
-        yield_state_next = 17;
+        cmd_next = 8'b10111000;
+        yield_state_next = 5'b10001;
       end
-    end else if(yield_state == 18) begin
+    end else if(yield_state == 5'b10010) begin
       __next = 1;
-      cmd_next = 184;
-      yield_state_next = 19;
-    end else if(yield_state == 19) begin
+      cmd_next = 8'b10111000;
+      yield_state_next = 5'b10011;
+    end else if(yield_state == 5'b10011) begin
       if(__next == 0) begin
-        cmd_next = 184;
-        yield_state_next = 20;
+        cmd_next = 8'b10111000;
+        yield_state_next = 5'b10100;
       end else begin
         __next = __next - 1;
-        cmd_next = 184;
-        yield_state_next = 19;
+        cmd_next = 8'b10111000;
+        yield_state_next = 5'b10011;
       end
-    end else if(yield_state == 20) begin
-      cmd_next = 184;
-      yield_state_next = 0;
-    end else if(yield_state == 24) begin
+    end else if(yield_state == 5'b10100) begin
+      cmd_next = 8'b10111000;
+      yield_state_next = 5'b00000;
+    end else if(yield_state == 5'b11000) begin
       __next = 1;
-      cmd_next = 184;
-      yield_state_next = 25;
-    end else if(yield_state == 25) begin
+      cmd_next = 8'b10111000;
+      yield_state_next = 5'b11001;
+    end else if(yield_state == 5'b11001) begin
       if(__next == 0) begin
-        cmd_next = 161;
-        yield_state_next = 26;
+        cmd_next = 8'b10100xx1;
+        yield_state_next = 5'b11010;
       end else begin
         __next = __next - 1;
-        cmd_next = 184;
-        yield_state_next = 25;
+        cmd_next = 8'b10111000;
+        yield_state_next = 5'b11001;
       end
-    end else if(yield_state == 26) begin
+    end else if(yield_state == 5'b11010) begin
       __next = 1;
-      cmd_next = 184;
-      yield_state_next = 27;
+      cmd_next = 8'b10111000;
+      yield_state_next = 5'b11011;
     end else if(__next == 0) begin
-      cmd_next = 184;
-      yield_state_next = 0;
+      cmd_next = 8'b10111000;
+      yield_state_next = 5'b00000;
     end else begin
       __next = __next - 1;
-      cmd_next = 184;
-      yield_state_next = 27;
+      cmd_next = 8'b10111000;
+      yield_state_next = 5'b11011;
     end
   end
 
@@ -168,8 +166,8 @@ module fsm
     if(~RESET) begin
       _ <= 0;
       _ <= 15;
-      cmd <= 184;
-      yield_state <= 8;
+      cmd <= 8'b10111000;
+      yield_state <= 5'b01000;
     end else begin
       cmd <= cmd_next;
       _ <= __next;
@@ -180,4 +178,3 @@ module fsm
   assign state = yield_state;
 
 endmodule
-
